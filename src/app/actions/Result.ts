@@ -15,9 +15,6 @@ export interface Candidate {
 }
 
 export async function Result(name: string, surname: string, major: string) {
-  const first = name.trim().toLowerCase();
-  const last = surname.trim().toLowerCase();
-  const selectedMajor = major.trim().toLowerCase();
 
   const res = await fetch("https://api.ywc20.ywc.in.th/homework/candidates", {
     headers: {

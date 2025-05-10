@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { animate, easeInOut, motion } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 
 interface Props {
   setShowCard: () => void;
@@ -63,13 +63,12 @@ export default function Envelope(props: Props) {
       </motion.div>
 
       <motion.div
-        animate={{ opacity: [1, 0.2, 1] ,y: [0, -10, 0] }}
+        animate={{ opacity: [1, 0.2, 1], y: [0, -10, 0] }}
         transition={{
-          duration: 2, 
-          repeat: Infinity, 
+          duration: 2,
+          repeat: Infinity,
           repeatType: "loop",
         }}
-        
         className="text-gray-500 text-shadow-amber-50 -z-0 flex mb-10 justify-center items-center"
       >
         Clickable
@@ -77,4 +76,3 @@ export default function Envelope(props: Props) {
     </div>
   );
 }
- 
