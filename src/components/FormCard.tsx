@@ -252,6 +252,7 @@ const RadioFormCard: React.FC = () => {
                 alt="yay"
                 width={200}
                 height={150}
+                loading="lazy"
                 className="flex justify-center items-center"
               />
               <p className="text-lg font-bold text-gray-700">
@@ -304,6 +305,7 @@ const RadioFormCard: React.FC = () => {
                 alt="hug"
                 width={200}
                 height={150}
+                loading="lazy"
                 className="flex justify-center items-center"
               />
               <p className="mt-4 text-lg font-medium text-gray-700">
