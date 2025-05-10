@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import "./globals.css";
 import { Prompt } from "next/font/google";
@@ -15,10 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th" className={prompt.variable}>
-      <body className="scroll-smooth font-sans" >
-        
-        {children}
-      </body>
+      <body className="scroll-smooth">{children}</body>
     </html>
   );
 }
