@@ -2,24 +2,21 @@ import { useState } from "react";
 import { animate, easeInOut, motion } from "framer-motion";
 
 interface Props {
-  setShowCard: () => void
+  setShowCard: () => void;
 }
 
 export default function Envelope(props: Props) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div 
-      
-      className="flex justify-center items-center h-screen relative"
-    >
+    <div className="flex flex-col justify-center items-center h-screen relative">
       <motion.div
-      animate={{ y:  [0, -20, 0] }}
-      transition={{ 
-        duration: 1.2,
-        repeat: Infinity,
-        ease: easeInOut
-      }}  
+        animate={{ y: [0, -20, 0] }}
+        transition={{
+          duration: 1.2,
+          repeat: Infinity,
+          ease: easeInOut,
+        }}
         className="relative top-12 cursor-pointer animate-up"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -39,7 +36,6 @@ export default function Envelope(props: Props) {
             <p className="font-prompt">ประกาศผล</p>
             <p className="font-prompt">ผู้มีสิทธิ์สัมภาษณ์ !</p>
           </div>
-         
         </motion.div>
 
         {/* Envelope Front */}
@@ -50,7 +46,7 @@ export default function Envelope(props: Props) {
           {[1, 2, 3, 4, 5].map((_, i) => (
             <motion.div
               key={i}
-              className={`heart-shape absolute left-[${i * 20}px]`}
+              className={`heart-shape absolute`}
               animate={{
                 y: [-0, -150],
                 scale: [0.3, 1.3],
@@ -59,15 +55,26 @@ export default function Envelope(props: Props) {
               transition={{
                 duration: 1 + (i % 3) * 0.7,
                 repeat: Infinity,
-                ease: "easeOut",
+                ease: "easeInOut",
               }}
             />
           ))}
         </div>
       </motion.div>
 
-      {/* Shadow */}
-      <div className="absolute top-[300px] left-[-15px] w-[330px] h-[25px] bg-black/30 rounded-full z-[-1] "></div> 
+      <motion.div
+        animate={{ opacity: [1, 0.2, 1] ,y: [0, -10, 0] }}
+        transition={{
+          duration: 2, 
+          repeat: Infinity, 
+          repeatType: "loop",
+        }}
+        
+        className="text-gray-500 text-shadow-amber-50 -z-0 flex mb-10 justify-center items-center"
+      >
+        Clickable
+      </motion.div>
     </div>
   );
 }
+ 
