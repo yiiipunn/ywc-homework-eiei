@@ -5,9 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Envelope from "@/components/Envelope";
 import { Result } from "@/app/actions/Result";
 import { Candidate } from "@/app/actions/Result";
-import { animate, easeInOut, motion } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 
 const RadioFormCard: React.FC = () => {
   const [showCard, setShowCard] = useState(false);
@@ -19,23 +18,23 @@ const RadioFormCard: React.FC = () => {
   const [showInterviewDetail, setShowInterviewDetail] = useState(false);
 
   const getInterviewTime = (major: string) => {
-  if (major === "web_content" || major === "web_marketing") {
-    return {
-      time: "09:00 - 12:00 น.",
-      session: "รอบเช้า",
-    };
-  } else if (major === "web_design" || major === "web_programming") {
-    return {
-      time: "13:00 - 17:00 น.",
-      session: "รอบบ่าย",
-    };
-  } else {
-    return {
-      time: "09:00 - 17:00 น.",
-      session: "ทั้งวัน",
-    };
-  }
-};
+    if (major === "web_content" || major === "web_marketing") {
+      return {
+        time: "09:00 - 12:00 น.",
+        session: "รอบเช้า",
+      };
+    } else if (major === "web_design" || major === "web_programming") {
+      return {
+        time: "13:00 - 17:00 น.",
+        session: "รอบบ่าย",
+      };
+    } else {
+      return {
+        time: "09:00 - 17:00 น.",
+        session: "ทั้งวัน",
+      };
+    }
+  };
 
   const handleOptionChange = (value: string) => {
     setSelectedOption(value);
@@ -262,23 +261,26 @@ const RadioFormCard: React.FC = () => {
                 ผ่านการคัดเลือกเข้าสู่รอบสัมภาษณ์ Young Webmaster Camp 20
               </p>
               <p className="text-md text-[#594100]">
-                <strong>สาขา:</strong> {majorDisplayMap[matchResult.major] || matchResult.major}
+                <strong>สาขา:</strong>{" "}
+                {majorDisplayMap[matchResult.major] || matchResult.major}
               </p>
               <p className="text-md text-[#594100] mb-4">
-                <strong>เลขประจำตัวผู้เข้าสัมภาษณ์:</strong> {matchResult.interviewRefNo}
+                <strong>เลขประจำตัวผู้เข้าสัมภาษณ์:</strong>{" "}
+                {matchResult.interviewRefNo}
               </p>
               {!showInterviewDetail && (
-              <div className="flex lg:flex-row gap-x-2 flex-col items-center">
-                <p className="text-sm text-gray-500">
-                  โปรดตรวจสอบรายละเอียดการสัมภาษณ์ได้ที่
-                </p>
-                <button
-                  onClick={() => setShowInterviewDetail(true)}
-                  className="text-sm text-gray-500 font-medium text-shadow-black/50 underline  hover:text-[#f5898d] hover:decoration-[#f5898d]"
-                >
-                  รายละเอียดการสัมภาษณ์
-                </button>
-              </div>)}
+                <div className="flex lg:flex-row gap-x-2 flex-col items-center">
+                  <p className="text-sm text-gray-500">
+                    โปรดตรวจสอบรายละเอียดการสัมภาษณ์ได้ที่
+                  </p>
+                  <button
+                    onClick={() => setShowInterviewDetail(true)}
+                    className="text-sm text-gray-500 font-medium text-shadow-black/50 underline  hover:text-[#f5898d] hover:decoration-[#f5898d]"
+                  >
+                    รายละเอียดการสัมภาษณ์
+                  </button>
+                </div>
+              )}
               <button
                 onClick={() => {
                   setChecked(false);
@@ -337,38 +339,39 @@ const RadioFormCard: React.FC = () => {
             </>
           )}
           {showInterviewDetail && matchResult && (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-    className="mt-4 w-full max-w-2xl bg-[#fff8f0] border-2 border-[#f9a6a9] rounded-xl shadow-md p-6 text-[#594100]"
-  >
-    <h3 className="text-xl font-bold mb-2">รายละเอียดการสัมภาษณ์</h3>
-    <div className="flex flex-col justify-left ">
-      <p>
-        <strong>วันสัมภาษณ์:</strong> 11 พฤษภาคม 2568
-      </p>
-      <p>
-        <strong>เวลาสัมภาษณ์:</strong>{" "}
-        {getInterviewTime(matchResult.major).time} ({getInterviewTime(matchResult.major).session})
-      </p>
-      <p>
-        <strong>สถานที่:</strong> Cleverse ชั้น 13 อาคารรุ่งโรจน์ธนกุล
-        <br />
-        ถนนรัชดาภิเษก เขตห้วยขวาง กรุงเทพฯ
-      </p>
-      <p>
-        <strong>แต่งกาย:</strong> ชุดสุภาพ
-      </p>
-    </div>
-    <button
-      onClick={() => setShowInterviewDetail(false)}
-      className="mt-4 px-4 py-2 border border-gray-400 rounded-lg text-sm hover:bg-[#f9a6a950]"
-    >
-      ปิดรายละเอียด
-    </button>
-  </motion.div>
-)}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mt-4 w-full max-w-2xl bg-[#fff8f0] border-2 border-[#f9a6a9] rounded-xl shadow-md p-6 text-[#594100]"
+            >
+              <h3 className="text-xl font-bold mb-2">รายละเอียดการสัมภาษณ์</h3>
+              <div className="flex flex-col justify-left ">
+                <p>
+                  <strong>วันสัมภาษณ์:</strong> 11 พฤษภาคม 2568
+                </p>
+                <p>
+                  <strong>เวลาสัมภาษณ์:</strong>{" "}
+                  {getInterviewTime(matchResult.major).time} (
+                  {getInterviewTime(matchResult.major).session})
+                </p>
+                <p>
+                  <strong>สถานที่:</strong> Cleverse ชั้น 13 อาคารรุ่งโรจน์ธนกุล
+                  <br />
+                  ถนนรัชดาภิเษก เขตห้วยขวาง กรุงเทพฯ
+                </p>
+                <p>
+                  <strong>แต่งกาย:</strong> ชุดสุภาพ
+                </p>
+              </div>
+              <button
+                onClick={() => setShowInterviewDetail(false)}
+                className="mt-4 px-4 py-2 border border-gray-400 rounded-lg text-sm hover:bg-[#f9a6a950]"
+              >
+                ปิดรายละเอียด
+              </button>
+            </motion.div>
+          )}
         </motion.div>
       )}
     </div>
